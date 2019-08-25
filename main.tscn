@@ -1,0 +1,350 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Camera.gd" type="Script" id=4]
+[ext_resource path="res://obstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sidearea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui.tscn" type="PackedScene" id=7]
+[ext_resource path="res://score.gd" type="Script" id=8]
+[ext_resource path="res://pause_gui.tscn" type="PackedScene" id=9]
+[ext_resource path="res://win_gui.tscn" type="PackedScene" id=10]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.956863, 0.976471, 0.984314, 1 )
+sky_horizon_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+sky_curve = 1.09132
+sky_energy = 0.65
+ground_bottom_color = Color( 0.0588235, 0.00392157, 0, 1 )
+ground_horizon_color = Color( 0.129412, 0.509804, 0.639216, 1 )
+ground_curve = 0.380546
+ground_energy = 1.94
+sun_color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
+sun_curve = 0.263902
+sun_energy = 0.0
+
+[sub_resource type="Environment" id=2]
+background_mode = 3
+background_sky = SubResource( 1 )
+background_color = Color( 0.113725, 0.113725, 0.113725, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 3.5
+fog_enabled = true
+fog_color = Color( 1, 1, 1, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+fog_sun_amount = 0.92
+fog_depth_begin = 175.8
+fog_depth_end = 615.4
+fog_depth_curve = 1.03527
+fog_transmit_enabled = true
+fog_transmit_curve = 1.1487
+ss_reflections_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 18.19
+dof_blur_far_transition = 68.21
+dof_blur_far_amount = 0.15
+dof_blur_far_quality = 2
+dof_blur_near_distance = 1.28
+glow_enabled = true
+glow_intensity = 5.27
+glow_strength = 1.04
+glow_hdr_luminance_cap = 51.38
+glow_hdr_scale = 0.64
+adjustment_enabled = true
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1, 2.48403, 6.06752 )
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+
+[node name="platform" parent="." instance=ExtResource( 2 )]
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -23.0892, 0.50143, 0 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="player"]
+transform = Transform( 1.44428, -1.23365, -0.626229, 1.31491, 0.942529, 1.17586, -0.430178, -1.26085, 1.49171, 21.9782, 19.7412, 26.7694 )
+light_color = Color( 0.964706, 0.964706, 0.964706, 1 )
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.32007e-008, -0.15242, -0.988316, -6.66249e-009, 0.988316, -0.15242, 1, -5.32907e-015, -4.37114e-008, -25.341, 0.864366, 0 )
+environment = SubResource( 2 )
+current = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+player = NodePath("../player")
+offset = Vector3( -1.5, 1, 0 )
+
+[node name="obstacles" type="Node" parent="."]
+
+[node name="obstacle" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.759639, -2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 2" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76, 2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 3" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.76, 2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 4" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.76, 0 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 5" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.76, 0 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 7" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.76, 2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 9" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.76, -4 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 6" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0.76, -2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 41" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 0.76, 0 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 42" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0.76, 0 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 8" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0.76, 5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 43" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0.76, -3 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 10" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0.76, 2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 11" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.76, 5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 12" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.76, -5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 13" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.76, -2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 14" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.76, 2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 15" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0.76, 2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 16" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0.76, 5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 17" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0.76, 0 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 18" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0.76, -5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 19" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 0.76, -5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 20" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 0.76, 3 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 21" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 0.76, -1 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 36" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0.76, -3 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 38" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 98, 0.76, 2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 39" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 0.76, 4 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 22" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0.76, -1 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 23" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0.76, 4 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 24" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0.76, 2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 25" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0.76, -5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 37" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0.76, -2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 26" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0.76, -5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 27" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0.76, -5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 28" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 124, 0.76, -3 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 29" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 127, 0.76, 0 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 40" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 131, 0.76, -4 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 30" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 127, 0.76, 4 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 31" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0.76, 4 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 32" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 119, 0.76, 1 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 33" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 134, 0.76, 1 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 34" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 134, 0.76, 5 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="obstacle 35" parent="obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 0.76, -2 )
+mass = 0.00102041
+gravity_scale = 0.0
+
+[node name="area" parent="obstacles" instance=ExtResource( 6 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.118192 )
+
+[node name="area" parent="obstacles/area" index="0"]
+editor/display_folded = true
+
+[node name="area2" parent="obstacles" instance=ExtResource( 6 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.823 )
+
+[node name="Control" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
+script = ExtResource( 8 )
+player = NodePath("../player")
+
+[node name="pause" parent="." instance=ExtResource( 9 )]
+pause_mode = 2
+editor/display_folded = true
+
+[node name="winUI" parent="." instance=ExtResource( 10 )]
+editor/display_folded = true
+
+[node name="win" type="Area" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 145.758, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="hitbox" type="CollisionShape" parent="win"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0736, 0, 0 )
+shape = SubResource( 3 )
+[connection signal="pressed" from="pause/menubg/VBoxContainer/resumeContainer/resumebtn" to="." method="_on_resumebtn_pressed"]
+[connection signal="pressed" from="pause/menubg/VBoxContainer/menuContainer/menubtn" to="." method="_on_menubtn_pressed"]
+[connection signal="pressed" from="winUI/menubg/menuContainer/menubtn" to="." method="_on_menubtn_pressed"]
+[connection signal="area_entered" from="win" to="." method="_on_win_area_entered"]
+
+[editable path="obstacles/area"]
+
+[editable path="Control"]
+
+[editable path="pause"]
+
+[editable path="winUI"]
+
+[editable path="winUI/menubg/menuContainer"]

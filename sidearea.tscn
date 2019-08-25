@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="area" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.506654 )
+
+[node name="area" type="Area" parent="."]
+
+[node name="hitbox" type="CollisionShape" parent="area"]
+transform = Transform( 86.179, 0, 0, 0, 1, 0, 0, 0, 1, 61.5605, 0, -7.45724 )
+shape = SubResource( 1 )

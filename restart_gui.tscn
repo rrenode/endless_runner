@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/pixelart.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "text_load"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.09, 0.124, 0.147, 0.215, 0.318, 0.41, 0.444, 0.513, 0.582, 0.708, 0.777, 0.846, 0.892, 0.972, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0862745, 0.0941176, 0.2, 0 ), Color( 0.0862745, 0.0941176, 0.2, 0.215686 ), Color( 0.0862745, 0.0941176, 0.2, 0.45098 ), Color( 0.0862745, 0.0941176, 0.2, 0.705882 ), Color( 0.0862745, 0.0941176, 0.2, 0.878431 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "text_load"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.09, 0.124, 0.147, 0.215, 0.318, 0.41, 0.444, 0.513, 0.582, 0.708, 0.777, 0.846, 0.892, 0.972, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0862745, 0.0941176, 0.2, 0 ), Color( 0.0862745, 0.0941176, 0.2, 0.215686 ), Color( 0.0862745, 0.0941176, 0.2, 0.45098 ), Color( 0.0862745, 0.0941176, 0.2, 0.705882 ), Color( 0.0862745, 0.0941176, 0.2, 0.878431 ) ]
+}
+
+[node name="Restart" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -38.0
+margin_top = -9.0
+margin_right = 1043.0
+margin_bottom = 613.0
+color = Color( 0.0862745, 0.0941176, 0.2, 0.878431 )
+
+[node name="restart" type="Label" parent="."]
+margin_left = -0.56805
+margin_top = 183.78
+margin_right = 1024.43
+margin_bottom = 280.78
+custom_fonts/font = SubResource( 1 )
+text = "Press 'space' to restart"
+align = 1
+
+[node name="anim" type="AnimationPlayer" parent="restart"]
+anims/text_load = SubResource( 2 )
+
+[node name="menu" type="Label" parent="."]
+margin_left = -0.56805
+margin_top = 222.74
+margin_right = 1024.43
+margin_bottom = 319.74
+custom_fonts/font = SubResource( 1 )
+text = "Press 'enter' for menu"
+align = 1
+
+[node name="anim" type="AnimationPlayer" parent="menu"]
+anims/text_load = SubResource( 3 )
