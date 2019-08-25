@@ -106,7 +106,6 @@ align = 1
 anims/start = SubResource( 4 )
 
 [node name="info" type="Control" parent="."]
-editor/display_folded = true
 margin_top = 560.0
 margin_right = 40.0
 margin_bottom = 600.0

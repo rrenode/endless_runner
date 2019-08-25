@@ -11,3 +11,4 @@ func _on_anim_animation_finished(anim_name):
 
 func _on_startGame_pressed():
 	get_tree().change_scene_to(scene)
+#HI
